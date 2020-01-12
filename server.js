@@ -31,8 +31,8 @@ app.get('/test', (req, res) => {
   // res.header("Access-Control-Allow-Origin", '*');
   // res.set('Content-Type', 'application/json');
 
-  // turn this into variable and import it globally
-  fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
+  // set limit to determine how many tokens will be loaded
+  fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=50', {
     headers: {
       'X-CMC_PRO_API_KEY': apiKey
     }

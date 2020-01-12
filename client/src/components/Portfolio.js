@@ -1,6 +1,6 @@
 import React from 'react';
 import TokenBar from './TokenBar.js'
-import { AppContext } from '../context/AppContext.js';
+import { TokenContext } from '../context/TokenContext.js';
 
 class Portfolio extends React.Component {
 
@@ -11,11 +11,11 @@ class Portfolio extends React.Component {
      };
    }
 
-   static contextType = AppContext;
+   static contextType = TokenContext;
 
-   componentDidMount() {
-     this.setState({portfolioTokens: this.context.state.portfolioTokens});
-   }
+   // componentDidMount() {
+   //   this.setState({portfolioTokens: this.context.state.portfolioTokens});
+   // }
 
 
   render() {
@@ -28,8 +28,8 @@ class Portfolio extends React.Component {
        <p>My Portfolio</p>
 
        <div>
-       { this.state.portfolioTokens.map( (coins) => {
-         return <TokenBar add = {this.props.add} name = {coins.name} symbol = {coins.symbol} rank = {coins.cmc_rank} price = {coins.price} open = {this.openModal} close = {this.closeModal}/>
+       { this.context.state.portfolioTokens.map( (coins) => {
+         return <TokenBar add = {this.props.add} name = {coins.name} symbol = {coins.symbol} rank = {coins.cmc_rank} price = {coins.quote.USD.price} open = {this.openModal} close = {this.closeModal}/>
        })}
        </div>
        </div>

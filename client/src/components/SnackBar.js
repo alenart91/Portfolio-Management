@@ -1,13 +1,16 @@
-import React from 'react';
+import React , {useContext} from 'react';
+import { TokenContext } from '../context/TokenContext.js';
 
 const SnackBar = (props) => {
-   // console.log( message);
+
+  const tokenContext = useContext(TokenContext);
+
   return (
     <React.Fragment>
       <div className = "snackbar">
-      <p>{(props.type === 'error') ? 'error message' : 'success message'}</p>
-      <p>{props.message}</p>
-      <p onClick = {props.close}>close</p>
+        <p>{(tokenContext.state.notificationType === 'error') ? 'error message' : 'success message'}</p>
+        <p>{tokenContext.state.message}</p>
+        <p onClick = {tokenContext.closeMessage}>close</p>
       </div>
     </React.Fragment>
   );

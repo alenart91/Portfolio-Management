@@ -12,11 +12,7 @@ class TopTokens extends React.Component {
      this.state = {
        topTokens: [],
        loading: true,
-       notificationType: null,
-       error: false,
-       message: '',
-       tokenModalOpen: false,
-       selectedToken: ''
+       tokenModalOpen: false
      };
      console.log(this.context);
    }
@@ -32,14 +28,15 @@ class TopTokens extends React.Component {
 
 
   render() {
-    console.log(this.context);
-    console.log(this.state.topTokens);
-    console.log(this.state);
+    // console.log(this.context);
+    // console.log(this.state.topTokens);
+    // console.log(this.state);
 
-    const tokenContextObject = {...this.context};
+    // do we need a seperate tokenBar component?
+
+    // const tokenContextObject = {...this.context};
     return (
       <React.Fragment>
-      <button onClick = {this.openSnackbar}>error</button>
       {this.context.state.loading ? <p>Loading...</p> :
       <div> { this.context.state.topTokens.map( (coins) => {
         return <TokenBar key = {coins.name} add = {this.props.add} name = {coins.name} symbol = {coins.symbol} rank = {coins.cmc_rank} price = {coins.quote.USD.price} open = {this.openModal} close = {this.closeModal}/>
